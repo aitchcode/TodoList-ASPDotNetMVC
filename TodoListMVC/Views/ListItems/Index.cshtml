@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TodoListMVC.Models.ListItem>
+
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+    int sr = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    
+</head>
+<body>
+    <h4 style="border-top:20px !important">@ViewBag.name's Todo List</h4>
+    <a class="btn btn-primary createBtn" href="/ListItems/Create/@ViewBag.id">
+        Add Item
+    </a>
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @sr
+                    </td>
+                    <td>
+                        @if (item.CheckedStatus == true)
+                        {
+                           <p class="checkedText">@item.Text</p>
+                        }
+                        else
+                        {
+                            <p>@item.Text</p>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckedStatus)
+                    </td>
+                    <td>
+                        <a href="/ListItems/Edit/@item.Id">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a href="/ListItems/Delete/@item.Id">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
+                </tr>
+                sr++;
+            }
+        </tbody>
+    
+    </table>
+</body>
+</html>

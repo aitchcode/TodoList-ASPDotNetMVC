@@ -1,0 +1,20 @@
+﻿.createBtn {
+    float: right;
+    margin-top:20px;
+    margin-bottom:20px !important;
+}
+
+thead {
+    background-color:black;
+    color:white;
+}
+
+.checkBox {
+    cursor:pointer;
+}
+
+.checkedText {
+    font-style:italic;
+    text-decoration:line-through;
+    color:red;
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TodoListMVC.Models.User>
+
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+    int sr = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Users</title>
+</head>
+<body>
+    <a class="btn btn-primary createBtn" href="/Users/Create">
+        Add User
+    </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @sr
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a href="/Users/Edit/@item.Id">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a href="/Users/Delete/@item.Id">
+                            <i class="material-icons">delete</i>
+                        </a>
+                        <a href="/ListItems/Index/@item.Id">
+                            <i class="material-icons">list_alt</i>
+                        </a>
+                    </td>
+                </tr>
+                sr++;
+            }
+        </tbody>
+    
+    </table>
+</body>
+</html>

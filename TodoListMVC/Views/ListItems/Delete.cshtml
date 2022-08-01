@@ -1,0 +1,64 @@
+﻿@model TodoListMVC.Models.ListItem
+
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>ListItem</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckedStatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CheckedStatus)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index", new { id=Model.UserId})
+            </div>
+        }
+    </div>
+</body>
+</html>
